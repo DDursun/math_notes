@@ -1,0 +1,49 @@
+\twocolumn[
+\begin{center}
+\textbf{\Large General shortcuts}
+\end{center}
+\vspace{4pt}]
+
+
+It is often the case that complex problems are transferred into a different domain (e.g., via Laplace transforms) or reformulated as systems of ODEs, and complex algebra is the price we pay to solve such problems. This section provides tips and tricks to help solve some of the common problems encountered.
+
+\hrulefill
+
+
+\textbf{Partial Fraction Decomposition}
+
+$\dfrac{1}{(s+a)^n} = \dfrac{A_1}{s+a} + \dfrac{A_2}{(s+a)^2} + \cdots + \dfrac{A_n}{(s+a)^n}$
+
+$\dfrac{1}{(s+a)^2(s+b)} = \dfrac{A}{s+a} + \dfrac{B}{(s+a)^2} + \dfrac{C}{s+b}$
+
+$\dfrac{1}{(s+a)(s^2+b^2)} = \dfrac{A}{s+a} + \dfrac{Bs+C}{s^2+b^2}$
+
+$\dfrac{1}{s^2(s+a)} = \dfrac{A}{s} + \dfrac{B}{s^2} + \dfrac{C}{s+a}$
+
+
+
+\hrulefill
+
+\textbf{6. Chain Rule}
+
+$\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}$, \quad $\frac{\partial z}{\partial s} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial s}$
+
+
+
+\textbf{17. Hyperbolic Functions}
+
+$\sinh x = \frac{e^x - e^{-x}}{2}$, \quad $\cosh x = \frac{e^x + e^{-x}}{2}$
+
+$\cosh^2 x - \sinh^2 x = 1$, \quad $\cosh^2 x + \sinh^2 x = \cosh(2x)$
+
+$\sinh(A \pm B) = \sinh A \cosh B \pm \cosh A \sinh B$
+
+$\cosh(A \pm B) = \cosh A \cosh B \pm \sinh A \sinh B$
+
+$\frac{d}{dx}\sinh x = \cosh x$, \quad $\frac{d}{dx}\cosh x = \sinh x$
+
+\hrulefill
+
+\textbf{18. Reduction Formula}
+
+$\displaystyle\int \sin^n\theta\,d\theta = -\frac{\sin^{n-1}\theta\cos\theta}{n} + \frac{n-1}{n}\int\sin^{n-2}\theta\,d\theta$

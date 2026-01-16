@@ -1,0 +1,147 @@
+\twocolumn[
+\begin{center}
+\textbf{\Large Partial Differential Equations}
+\end{center}
+\vspace{4pt}
+]
+%----------------------------------------------
+\textbf{General 2nd-Order Linear PDE:} $Au_{xx} + Bu_{xy} + Cu_{yy} + Du_x + Eu_y + Fu = G$
+
+\textbf{Classification} (based on discriminant $B^2 - 4AC$):
+
+\begin{tabular}{@{}lll@{}}
+\toprule
+Type & Condition & Example \\
+\midrule
+Hyperbolic & $B^2 - 4AC > 0$ & Wave eq. \\
+Parabolic & $B^2 - 4AC = 0$ & Heat eq. \\
+Elliptic & $B^2 - 4AC < 0$ & Laplace eq. \\
+\bottomrule
+\end{tabular}
+
+\hrulefill
+
+\textbf{Separation of Variables}\\
+\textbf{Steps:}
+1. Assume $u(x,t) = X(x)T(t)$ and substitute into PDE.
+2. Divide both sides to separate variables: $\frac{\text{terms in }t}{\text{coeff}} = \frac{\text{terms in }x}{\text{coeff}} = -\lambda$
+3. Check three cases for spatial ODE $X'' + \lambda X = 0$:
+
+\begin{tabular}{@{}lll@{}}
+$\lambda < 0$ & $X = c_1 e^{\sqrt{-\lambda}x} + c_2 e^{-\sqrt{-\lambda}x}$ & (or $\sinh$/$\cosh$) \\
+$\lambda = 0$ & $X = c_1 + c_2 x$ & \\
+$\lambda > 0$ & $X = c_1\cos\sqrt{\lambda}x + c_2\sin\sqrt{\lambda}x$ & \\
+\end{tabular}
+
+4. Apply homogeneous BCs to find which $\lambda$ gives nontrivial solutions $\Rightarrow$ eigenvalues $\lambda_n$, eigenfunctions $X_n(x)$.
+5. Solve temporal ODE for each $\lambda_n$ to get $T_n(t)$.
+6. Form general solution: $u(x,t) = \sum_{n} c_n X_n(x)T_n(t)$
+7. Apply IC to find coefficients $c_n$ using orthogonality.
+
+\begin{tabular}{@{}ll@{}}
+\toprule
+BCs & $X_n(x)$, $\lambda_n$ \\
+\midrule
+$u(0,t)=u(L,t)=0$ & $\sin\frac{n\pi x}{L}$, $\lambda_n = \frac{n^2\pi^2}{L^2}$ \\[4pt]
+$u_x(0,t)=u_x(L,t)=0$ & $\cos\frac{n\pi x}{L}$, $\lambda_n = \frac{n^2\pi^2}{L^2}$ \\[4pt]
+$u(0,t)=u_x(L,t)=0$ & $\sin\frac{(2n-1)\pi x}{2L}$, $\lambda_n = \frac{(2n-1)^2\pi^2}{4L^2}$ \\
+\bottomrule
+\end{tabular}
+
+\textbf{2D Problems} (e.g., $u_t = K(u_{xx}+u_{yy})$ on $[0,b]\times[0,c]$):
+
+Assume $u = X(x)Y(y)T(t)$, separate $\Rightarrow$ eigenvalues in both $x$ and $y$.
+
+\begin{multline}
+u(x,y,t) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty} A_{nm}\sin\frac{n\pi x}{b}\sin\frac{m\pi y}{c} \\
+\times e^{-K[(n\pi/b)^2+(m\pi/c)^2]t}
+\end{multline}
+
+\textbf{Finding $A_{nm}$:} At $t=0$: $u(x,y,0) = f(x,y)$. Multiply both sides by $\sin\frac{n\pi x}{b}\sin\frac{m\pi y}{c}$, integrate over domain, use orthogonality:
+\[A_{nm} = \frac{4}{bc}\int_0^b\int_0^c f(x,y)\sin\frac{n\pi x}{b}\sin\frac{m\pi y}{c}\,dy\,dx\]
+
+\textbf{1D Case with Constant IC:} If $u(x,0) = 1 = \sum_{n=1}^{\infty} B_n\sin(n\pi x)$
+
+Multiply by $\sin(m\pi x)$, integrate $0$ to $1$: $\int_0^1 \sin(m\pi x)\,dx = \frac{1-(-1)^m}{m\pi} = \frac{1}{2}B_m$
+
+$B_m = \frac{2(1-(-1)^m)}{m\pi} = \begin{cases} 0 & m \text{ even} \\ \frac{4}{m\pi} & m \text{ odd}\end{cases}$
+
+Solution: $u = \sum_{n=1,3,5,\ldots} \frac{4}{n\pi}\sin(n\pi x)e^{-n^2\pi^2 kt}$ or $u = \sum_{k=1}^{\infty} \frac{4}{(2k-1)\pi}\sin((2k-1)\pi x)e^{-(2k-1)^2\pi^2 kt}$
+
+
+\textbf{Tip:} $\int \frac{f'(x)}{f(x)}\,dx = \ln|f(x)| + C$
+
+\hrulefill
+
+\textbf{Systems of PDEs / Method of Characteristics}\\
+Given: $\mathbf{u}_t + A\mathbf{u}_x = 0$. Diagonalize: $A = PDP^{-1}$. Substitute $\mathbf{v} = P^{-1}\mathbf{u}$:
+
+$\mathbf{v}_t + D\mathbf{v}_x = 0$ $\Rightarrow$ decoupled equations $v_{i,t} + \lambda_i v_{i,x} = 0$
+
+\textbf{Solve $v_t + cv_x = 0$:} Characteristics: $\frac{dx}{dt} = c \Rightarrow x - ct = \text{const}$
+
+Solution: $v = F(x - ct)$. \quad If $v_t - cv_x = 0$: $v = F(x + ct)$
+
+After solving, transform back: $\mathbf{u} = P\mathbf{v}$
+
+\hrulefill
+
+\textbf{Laplace Transform Method for PDEs}\\
+$\mathcal{L}\{u_t\} = sU(x,s) - u(x,0)$
+
+$\mathcal{L}\{u_{tt}\} = s^2U(x,s) - su(x,0) - u_t(x,0)$
+
+$\mathcal{L}\{u_x\} = \frac{\partial U}{\partial x} = U_x(x,s)$
+
+$\mathcal{L}\{u_{xx}\} = \frac{\partial^2 U}{\partial x^2} = U_{xx}(x,s)$
+
+$\mathcal{L}\{u_{xt}\} = sU_x(x,s) - u_x(x,0)$
+
+\textbf{Example: Heat Equation via Laplace Transform}
+
+PDE: $u_t = ku_{xx}$, $u(x,0) = f(x)$, $u(0,t) = 0$, $u(L,t) = 0$
+
+Apply $\mathcal{L}$ in $t$: $sU - f(x) = kU_{xx}$
+
+Rearrange: $U_{xx} - \frac{s}{k}U = -\frac{f(x)}{k}$ (ODE in $x$)
+
+Solve ODE, apply BCs, then invert.
+
+\textbf{Example: Wave Equation via Laplace Transform}
+
+PDE: $u_{tt} = c^2 u_{xx}$, $u(x,0) = f(x)$, $u_t(x,0) = g(x)$
+
+Apply $\mathcal{L}$: $s^2U - sf(x) - g(x) = c^2 U_{xx}$
+
+$U_{xx} - \frac{s^2}{c^2}U = -\frac{sf(x) + g(x)}{c^2}$
+
+\hrulefill
+
+\textbf{Duhamel's Principle}\\
+For nonhomogeneous PDE with zero ICs: $u_t = ku_{xx} + F(x,t)$ or $u_{tt} = c^2u_{xx} + F(x,t)$
+
+\textbf{Steps:}
+1. Solve the corresponding homogeneous problem with IC $= F(x,\tau)$ at $t = \tau$.
+2. Call this solution $v(x,t;\tau)$ (parameterized by $\tau$).
+3. Final solution: $u(x,t) = \int_0^t v(x,t;\tau)\,d\tau$
+
+\hrulefill
+
+\textbf{Useful Identities}\\
+Orthogonality: $\int_0^L \sin\frac{n\pi x}{L}\sin\frac{m\pi x}{L}\,dx = \frac{L}{2}\delta_{nm}$
+
+$\int_0^L \cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\,dx = \begin{cases} L & n=m=0 \\ L/2 & n=m\neq 0 \\ 0 & n\neq m\end{cases}$
+
+$\int_0^L \sin\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\,dx = 0$ (all $n,m$)
+
+\hrulefill
+
+\textbf{Sturm-Liouville Problems}\\
+Form: $\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right] + [q(x) + \lambda r(x)]y = 0$
+
+Properties: Eigenvalues $\lambda_n$ are real; eigenfunctions $y_n$ orthogonal with weight $r(x)$:
+\[\int_a^b r(x)y_n(x)y_m(x)\,dx = 0 \quad (n \neq m)\]
+
+Eigenfunction expansion: $f(x) = \sum_{n=1}^{\infty} c_n y_n(x)$
+
+$c_n = \frac{\int_a^b r(x)f(x)y_n(x)\,dx}{\int_a^b r(x)y_n^2(x)\,dx}$

@@ -1,0 +1,121 @@
+\twocolumn[
+\begin{center}
+\textbf{\Large Optimization Problems}
+\end{center}
+\vspace{4pt}]
+%-------------
+%----------------------------------------------
+\textbf{1. Discrete Least-Squares Regression}
+
+\textbf{Goal:} Find coefficients that minimize sum of squared errors for data points $(x_i, y_i)$.
+
+\textbf{Linear fit:} $\hat{y} = a + bx$. Minimize $E(a,b) = \sum_{i=1}^{n}(y_i - a - bx_i)^2$
+
+\textbf{1.} Take partial derivatives and set to zero:
+\[\frac{\partial E}{\partial a} = -2\sum(y_i - a - bx_i) = 0\]
+\[\frac{\partial E}{\partial b} = -2\sum x_i(y_i - a - bx_i) = 0\]
+
+\textbf{2.} Simplify to normal equations:
+\[\sum y_i = na + b\sum x_i\]
+\[\sum x_i y_i = a\sum x_i + b\sum x_i^2\]
+
+\textbf{3.} Matrix form: $\mathbf{A}^T\mathbf{A}\vec{c} = \mathbf{A}^T\vec{y}$ where $\mathbf{A} = \begin{pmatrix} 1 & x_1 \\ \vdots & \vdots \\ 1 & x_n \end{pmatrix}$, $\vec{c} = \begin{pmatrix} a \\ b \end{pmatrix}$
+
+\textbf{Closed-form solution:} $b = \frac{n\sum x_i y_i - \sum x_i \sum y_i}{n\sum x_i^2 - (\sum x_i)^2}$, \quad $a = \bar{y} - b\bar{x}$
+
+\hrulefill
+
+%----------------------------------------------
+\textbf{2. Continuous Least-Squares}
+
+\textbf{Goal:} Find constants $a_i$ minimizing:
+\[E(a_1, \ldots, a_n) = \int_{x_1}^{x_2} \left[f(x) - \sum_{i=1}^{n} a_i \phi_i(x)\right]^2 dx\]
+
+\textbf{1.} Set $\frac{\partial E}{\partial a_i} = 0$ for each $i$.
+
+\textbf{2.} Apply Leibniz rule (move derivative inside): $\int_{x_1}^{x_2} 2[f(x) - \hat{f}(x)](-\phi_i(x))\, dx = 0$
+
+\textbf{3.} Normal equations:
+\[\int_{x_1}^{x_2} f(x)\phi_i(x)\,dx = \sum_{j=1}^{n} a_j \int_{x_1}^{x_2} \phi_i(x)\phi_j(x)\,dx\]
+
+\textbf{Matrix form:} $\mathbf{G}\vec{a} = \vec{b}$ where $G_{ij} = \int \phi_i \phi_j\,dx$ and $b_i = \int f\phi_i\,dx$
+
+\hrulefill
+
+%----------------------------------------------
+\textbf{3. Critical Points \& Classification}
+
+\textbf{Single variable:} Set $f'(x) = 0$, solve for critical points.
+
+\textbf{Second derivative test (1D):}
+\begin{itemize}
+\item $f''(c) > 0 \Rightarrow$ local minimum
+\item $f''(c) < 0 \Rightarrow$ local maximum
+\item $f''(c) = 0 \Rightarrow$ inconclusive
+\end{itemize}
+
+\textbf{Two variables:} Set $f_x = 0$ and $f_y = 0$, solve system.
+
+\textbf{Second derivative test (2D):} Compute Hessian determinant at critical point:
+\[D = f_{xx}f_{yy} - (f_{xy})^2 = \det\begin{pmatrix} f_{xx} & f_{xy} \\ f_{xy} & f_{yy} \end{pmatrix}\]
+
+\begin{itemize}
+\item $D > 0$ and $f_{xx} > 0 \Rightarrow$ local minimum
+\item $D > 0$ and $f_{xx} < 0 \Rightarrow$ local maximum
+\item $D < 0 \Rightarrow$ saddle point
+\item $D = 0 \Rightarrow$ inconclusive
+\end{itemize}
+
+\textbf{Note:} Always check boundary values for closed domains.
+
+\hrulefill
+
+%----------------------------------------------
+\textbf{4. Lagrange Multipliers}
+
+\textbf{Goal:} Optimize $f(x,y)$ subject to constraint $g(x,y) = c$.
+
+\textbf{Key idea:} At constrained extrema, $\nabla f$ is parallel to $\nabla g$ (can't improve $f$ while staying on constraint).
+
+\textbf{Method:} Solve $\nabla f = \lambda \nabla g$ with constraint:
+\[f_x = \lambda g_x, \quad f_y = \lambda g_y, \quad g(x,y) = c\]
+
+\textbf{Steps:}
+
+\textbf{1.} Write Lagrangian: $\mathcal{L}(x,y,\lambda) = f(x,y) - \lambda(g(x,y) - c)$
+
+\textbf{2.} Set $\nabla \mathcal{L} = 0$: solve $\mathcal{L}_x = 0$, $\mathcal{L}_y = 0$, $\mathcal{L}_\lambda = 0$
+
+\textbf{3.} Classify critical points by comparing $f$ values or using bordered Hessian.
+
+\textbf{Multiple constraints:} $\nabla f = \lambda_1 \nabla g_1 + \lambda_2 \nabla g_2 + \cdots$
+
+\textbf{Sensitivity:} $\lambda = \frac{\partial f^*}{\partial c}$ (how optimal value changes if constraint relaxed)
+
+\hrulefill
+
+%----------------------------------------------
+\textbf{5. Common Optimization Problems}
+
+\textbf{General approach:}
+
+\textbf{1.} Identify objective function (minimize/maximize) and constraint.
+
+\textbf{2.} Use constraint to reduce variables (substitution) or use Lagrange multipliers.
+
+\textbf{3.} Differentiate, set to zero, solve for critical points.
+
+\textbf{4.} Verify min/max using second derivative test or boundary analysis.
+
+\textbf{Tip:} For distance problems, minimize $D^2$ instead of $D$ (same critical points, easier algebra).
+
+\vspace{4pt}
+\textbf{Example Types:}
+
+\textit{Distance/Proximity:} Find point on $y = g(x)$ closest to $(x_0, y_0)$. Minimize $f(x) = (x-x_0)^2 + (g(x)-y_0)^2$.
+
+\textit{Beam problem:} Rod over fence (height $h$, distance $w$). Use similar triangles: $y = \frac{h(w+x)}{x}$, minimize $L^2 = (w+x)^2 + y^2$. Result: $x = \sqrt[3]{wh^2}$.
+
+\textit{Surface area/volume:} For cylinder with fixed $V = \pi r^2 h$, minimize $S = 2\pi r^2 + 2\pi rh$. Substitute $h = V/(\pi r^2)$, differentiate. Optimal: $h = 2r$.
+
+\textit{Path of least time (Snell's Law):} Minimize $T(x) = \frac{\sqrt{a^2+x^2}}{v_1} + \frac{\sqrt{b^2+(d-x)^2}}{v_2}$. Result: $\frac{\sin\theta_1}{v_1} = \frac{\sin\theta_2}{v_2}$.

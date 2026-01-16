@@ -1,0 +1,120 @@
+\twocolumn[
+\begin{center}
+\textbf{\Large Laplace Transforms}
+\end{center}
+\vspace{4pt}]
+%----------------------------------------------
+\textbf{Derivatives in $s$-Domain}
+
+Transform: $y(t) \to Y(s)$
+
+First derivative: $\mathcal{L}\{y'(t)\} = sY(s) - y(0)$
+
+Second derivative: $\mathcal{L}\{y''(t)\} = s^2Y(s) - sy(0) - y'(0)$
+
+Third derivative: $\mathcal{L}\{y'''(t)\} = s^3Y(s) - s^2y(0) - sy'(0) - y''(0)$
+
+\textbf{Multiplication by $t^n$:}
+$\mathcal{L}\{t^n g(t)\} = (-1)^n \frac{d^n}{ds^n}F(s)$
+
+\hrulefill
+
+\textbf{Convolution}
+
+Definition: $(f*g)(t) = \displaystyle\int_0^t f(\tau)\,g(t-\tau)\,d\tau$
+
+Laplace of convolution: $\mathcal{L}\{f*g\} = F(s) \cdot G(s)$
+
+Integration property: $\mathcal{L}\left\{\displaystyle\int_0^t g(\tau)\,d\tau\right\} = \dfrac{1}{s}F(s)$
+
+\hrulefill
+
+\textbf{Periodic (Repeating) Functions}
+
+For $g(t)$ with period $T$:
+$\mathcal{L}\{g(t)\} = \frac{1}{1-e^{-sT}} \cdot \int_0^T e^{-st}g(t)\,dt$
+
+If function changes form, split the integral (multiplier stays):
+$\mathcal{L}\{g(t)\} = \frac{1}{1-e^{-sT}} \cdot \left[\int_0^a e^{-st}g_1(t)\,dt + \int_a^{T} e^{-st}g_2(t)\,dt\right]$
+
+\hrulefill
+
+\textbf{Piecewise $\to$ Heaviside}
+
+Turn off at $a$: $\begin{cases} g(t), & t<a \\ 0, & t\geq a \end{cases} = g(t) - g(t)\,u(t-a)$
+
+Turn on at $a$: $\begin{cases} 0, & t<a \\ g(t), & t\geq a \end{cases} = g(t)\,u(t-a)$
+
+Switch at $a$: $\begin{cases} g(t), & t<a \\ h(t), & t\geq a \end{cases} = g(t) + [h(t)-g(t)]\,u(t-a)$
+
+\hrulefill
+
+\textbf{Time Shift (Second Shifting Theorem)}
+
+Forward: $\mathcal{L}\{u(t-a)\,g(t-a)\} = e^{-as}F(s)$
+
+Inverse: $\mathcal{L}^{-1}\{e^{-as}F(s)\} = u(t-a)\,g(t-a)$
+
+\textbf{Rewriting $g(t)\,u(t-a)$:} Can't apply shift theorem directly! Rewrite $g(t)$ in terms of $(t-a)$:
+\begin{align*}
+t\,u(t-1) &= [(t-1)+1]\,u(t-1) = (t-1)u(t-1) + u(t-1)
+\end{align*}
+Now each term fits shift theorem:
+$\mathcal{L}\{(t-1)u(t-1)\} = e^{-s}/s^2$, \quad $\mathcal{L}\{u(t-1)\} = e^{-s}/s$
+
+\hrulefill
+
+\textbf{First Shifting Theorem ($s$-shifting)}
+
+If $\mathcal{L}\{f(t)\} = F(s)$, then: $\mathcal{L}\{e^{at}f(t)\} = F(s-a)$
+
+Inverse: $\mathcal{L}^{-1}\{F(s-a)\} = e^{at}f(t)$
+
+Common forms:
+$\mathcal{L}\{e^{at}t^n\} = \frac{n!}{(s-a)^{n+1}}$, \quad
+$\mathcal{L}\{e^{at}\sin kt\} = \frac{k}{(s-a)^2+k^2}$, \quad
+$\mathcal{L}\{e^{at}\cos kt\} = \frac{s-a}{(s-a)^2+k^2}$
+
+\hrulefill
+
+\textbf{Unit Step Function}
+
+Definition: $u(t-a) = \begin{cases} 0, & t < a \\ 1, & t \geq a \end{cases}$
+\quad Transform: $\mathcal{L}\{u(t-a)\} = \dfrac{e^{-as}}{s}$
+
+\hrulefill
+
+\textbf{Completing the Square}
+
+For $s^2 + bs + c$: rewrite as $(s + b/2)^2 + (c - b^2/4)$
+
+Example: $s^2 + 6s + 34 = (s+3)^2 + 25$ \quad Then use $s$-shifting with $a = -3$, $k = 5$
+
+\hrulefill
+
+\textbf{Solving Systems of ODEs}
+
+\textbf{Method:}
+(1) Take $\mathcal{L}$ of both equations
+(2) Substitute ICs: $\mathcal{L}\{x'\} = sX - x(0)$, etc.
+(3) Get algebraic system in $X(s), Y(s)$
+(4) Solve for $X(s)$ and $Y(s)$ (elimination or Cramer's)
+(5) Inverse transform to get $x(t), y(t)$
+
+\textbf{Example setup:} For $\begin{cases} 2x' + y' - 2x = 1 \\ x' + y' - 3x - 3y = 2 \end{cases}$
+
+After $\mathcal{L}$: $\begin{cases} (2s-2)X + sY = \frac{1}{s} + \text{ICs} \\ (s-3)X + (s-3)Y = \frac{2}{s} + \text{ICs} \end{cases}$
+
+\hrulefill
+
+
+\textbf{Matrix exponentials:} 
+Laplace transforms can also be used for calculating exponentials of matrices as:
+
+1. Compute $sI - A$ and $\det(sI - A)$
+
+2. $(sI - A)^{-1} = \dfrac{\text{adj}(sI - A)}{\det(sI - A)}$
+
+3. Partial fractions on each entry
+
+4. $e^{At} = \mathcal{L}^{-1}\{(sI - A)^{-1}\}$

@@ -1,0 +1,159 @@
+\twocolumn[
+\begin{center}
+\textbf{\Large Vector Calculus \& Line Integrals}
+\end{center}
+\vspace{4pt}]
+%-------------
+%----------------------------------------------
+\textbf{1. Vector Functions}
+
+$\mathbf{r}(t) = x(t)\mathbf{i} + y(t)\mathbf{j} + z(t)\mathbf{k}$, \quad $\mathbf{r}'(t) = x'\mathbf{i} + y'\mathbf{j} + z'\mathbf{k}$
+
+$\frac{d}{dt}[f\mathbf{r}] = f'\mathbf{r} + f\mathbf{r}'$, \quad $\frac{d}{dt}[\mathbf{r}_1 \cdot \mathbf{r}_2] = \mathbf{r}_1' \cdot \mathbf{r}_2 + \mathbf{r}_1 \cdot \mathbf{r}_2'$
+
+$\frac{d}{dt}[\mathbf{r}_1 \times \mathbf{r}_2] = \mathbf{r}_1' \times \mathbf{r}_2 + \mathbf{r}_1 \times \mathbf{r}_2'$
+
+\hrulefill
+
+\textbf{2. Arc Length \& TNB}
+
+$s = \int_a^b |\mathbf{r}'|\,dt$, \quad $\mathbf{T} = \frac{\mathbf{r}'}{|\mathbf{r}'|}$, \quad $\mathbf{N} = \frac{\mathbf{T}'}{|\mathbf{T}'|}$, \quad $\mathbf{B} = \mathbf{T} \times \mathbf{N}$
+
+\hrulefill
+
+\textbf{3. Curvature $\kappa$}
+
+$\boxed{\kappa = \frac{|\mathbf{r}' \times \mathbf{r}''|}{|\mathbf{r}'|^3}}$ \quad 2D: $\kappa = \frac{|y''|}{(1 + (y')^2)^{3/2}}$
+
+Circle: $\kappa = 1/a$ \quad Helix: $\kappa = \frac{a}{a^2 + c^2}$
+
+\hrulefill
+
+\textbf{4. Velocity \& Acceleration}
+
+$\mathbf{v} = \mathbf{r}'$, \ Speed $= |\mathbf{v}|$, \ $\mathbf{a} = \mathbf{r}''$, \ $\mathbf{a} = a_T\mathbf{T} + a_N\mathbf{N}$
+
+$a_T = \frac{\mathbf{r}' \cdot \mathbf{r}''}{|\mathbf{r}'|}$, \quad $a_N = \frac{|\mathbf{r}' \times \mathbf{r}''|}{|\mathbf{r}'|}$
+
+\hrulefill
+
+
+\textbf{5. Gradient \& Directional Derivative}
+
+$\nabla f = \langle f_x, f_y, f_z \rangle$, \quad $\boxed{D_{\mathbf{u}}f = \nabla f \cdot \mathbf{u}}$
+
+\textbf{Note:} ``Derivative of $f$ in direction of $\mathbf{v}$'' means:
+\begin{itemize}
+\item Take partials of $f$ $\to$ get $\nabla f$, evaluate at given point
+\item Normalize $\mathbf{v}$ $\to$ $\mathbf{u} = \mathbf{v}/|\mathbf{v}|$
+\item Dot them: $D_{\mathbf{u}}f = \nabla f \cdot \mathbf{u}$
+\end{itemize}
+
+\hrulefill
+
+\textbf{6. Tangent Plane \& Normal Line}
+
+For $F(x,y,z) = c$ at point $P_0(x_0, y_0, z_0)$:
+
+\textbf{Step 1:} Find $\nabla F = \langle F_x, F_y, F_z \rangle$
+
+\textbf{Step 2:} Evaluate at $P_0$: $\mathbf{n} = \nabla F|_{P_0} = \langle a, b, c \rangle$
+
+\textbf{Step 3:} Tangent: $\boxed{a(x-x_0) + b(y-y_0) + c(z-z_0) = 0}$
+
+\textbf{Normal line:} $x = x_0 + at$, $y = y_0 + bt$, $z = z_0 + ct$
+
+\textit{Perpendicular tangent planes:} Two surfaces $F=0$, $G=0$ have $\perp$ tangent planes where $\nabla F \cdot \nabla G = 0$
+
+\hrulefill
+
+\textbf{7. Divergence \& Curl}
+
+For $\mathbf{F} = P\mathbf{i} + Q\mathbf{j} + R\mathbf{k}$:
+
+$\boxed{\text{div}\,\mathbf{F} = \nabla \cdot \mathbf{F} = P_x + Q_y + R_z}$
+
+$\boxed{\text{curl}\,\mathbf{F} = \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \partial_x & \partial_y & \partial_z \\ P & Q & R \end{vmatrix}}$
+
+$= (R_y - Q_z)\mathbf{i} - (R_x - P_z)\mathbf{j} + (Q_x - P_y)\mathbf{k}$
+
+\hrulefill
+
+\textbf{8. Vector Identities}
+
+$\nabla \cdot (f\mathbf{F}) = f(\nabla \cdot \mathbf{F}) + \mathbf{F} \cdot \nabla f$
+
+$\nabla \times (f\mathbf{F}) = f(\nabla \times \mathbf{F}) + (\nabla f) \times \mathbf{F}$
+
+$\mathbf{A} \times (\mathbf{B} \times \mathbf{C}) = \mathbf{B}(\mathbf{A} \cdot \mathbf{C}) - \mathbf{C}(\mathbf{A} \cdot \mathbf{B})$ \quad (BAC-CAB)
+
+\hrulefill
+
+\textbf{9. Line Integrals}
+
+Along $C$: $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \leq t \leq b$
+
+$\int_C G\,dx = \int_a^b G\,x'(t)\,dt$, \quad $\int_C G\,dy = \int_a^b G\,y'(t)\,dt$
+
+$\int_C G\,ds = \int_a^b G\sqrt{(x')^2+(y')^2+(z')^2}\,dt$
+
+If $y = f(x)$: $\boxed{ds = \sqrt{1 + \left(\frac{dy}{dx}\right)^2}\,dx}$
+
+\hrulefill
+
+\textbf{10. Work \& $\int\mathbf{F}\cdot d\mathbf{r}$}
+
+$\boxed{W = \int_C \mathbf{F} \cdot d\mathbf{r} = \int_C P\,dx + Q\,dy + R\,dz}$
+
+Parametric: $W = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\,dt$
+
+\hrulefill
+
+\textbf{11. Green's Theorem}
+
+$\boxed{\oint_C P\,dx + Q\,dy = \iint_D (Q_x - P_y)\,dA}$
+
+\textit{Transfers between line integrals and double integrals.}
+
+\hrulefill
+
+\textbf{12. Surface Area}
+
+For surface $z = f(x,y)$ over region $R$:
+$\boxed{A(S) = \iint_R \sqrt{1 + (f_x)^2 + (f_y)^2}\,dA}$
+
+\hrulefill
+
+\textbf{13. Polar Coordinates in Double Integrals}
+
+$x = r\cos\theta$, $y = r\sin\theta$, $dA = r\,dr\,d\theta$
+
+$\boxed{\iint_R f(x,y)\,dA = \int_\alpha^\beta \int_{g_1(\theta)}^{g_2(\theta)} f(r\cos\theta, r\sin\theta)\,r\,dr\,d\theta}$
+
+\textit{Tip:} $\int_{0}^{\pi} |\cos\theta|\,d\theta = 2\int_{0}^{\pi/2} \cos\theta\,d\theta$ (use symmetry for $|\cdot|$)
+
+\hrulefill
+
+\textbf{14. Stokes' Theorem}
+
+$\boxed{\oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot \mathbf{n}\,dA}$
+
+\textit{Transfers between line integrals and surface integrals.}
+
+\hrulefill
+
+\textbf{15. Divergence Theorem}
+
+$\boxed{\iint_S \mathbf{F} \cdot \mathbf{n}\,dS = \iiint_D \nabla \cdot \mathbf{F}\,dV}$
+
+\textit{Transfers between surface integrals and volume integrals.}
+
+\hrulefill
+
+\textbf{16. Laplacian in Polar}
+
+$\boxed{\nabla^2 u = u_{rr} + \frac{1}{r}u_r + \frac{1}{r^2}u_{\theta\theta}}$
+
+$r_x = \cos\theta$, $r_y = \sin\theta$, $\theta_x = -\frac{\sin\theta}{r}$, $\theta_y = \frac{\cos\theta}{r}$
+
+\hrulefill

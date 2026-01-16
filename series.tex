@@ -1,0 +1,106 @@
+\twocolumn[
+\begin{center}
+\textbf{\Large Series Solutions ODEs}
+\end{center}
+\vspace{4pt}]
+
+%----------------------------------------------
+\textbf{Power Series Method (Ordinary Points)}
+
+Form: $y'' + p(x)y' + q(x)y = r(x)$ about $x_0$ where $p(x), q(x)$ are analytic.
+
+\textbf{1. Assume:} $y = \sum_{n=0}^{\infty} a_n x^n$
+
+$y' = \sum_{n=1}^{\infty} n a_n x^{n-1}$, \quad $y'' = \sum_{n=2}^{\infty} n(n-1) a_n x^{n-2}$
+
+\textbf{2.} Shift indices to equalize powers of $x^n$
+
+\textbf{3.} Write out and equalize with RHS
+
+\textbf{4.} Develop recurrence for $a_n$, $a_{n+1}$, or $a_{n+2}$
+
+\textbf{5.} Solution: $y(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots$
+
+\textbf{Common Series:}
+
+$e^{ax} = \sum \frac{(ax)^n}{n!}$, \quad $\sin x = \sum (-1)^n \frac{x^{2n+1}}{(2n+1)!}$, \quad $\cos x = \sum (-1)^n \frac{x^{2n}}{(2n)!}$
+
+\textbf{Initial Conditions:} If $y(0), y'(0)$ given, verify by taking derivatives and substituting.
+
+Taylor form: $y = \sum \frac{y^{(n)}(0)}{n!} x^n$
+
+\vspace{6pt}
+%----------------------------------------------
+\textbf{Frobenius Method (Singular Points)}
+
+Use when $p(x)$ or $q(x)$ have singularities ($\frac{1}{x}$, $\frac{1}{x^2}$, etc.).
+
+Point $x_0$ is a \textbf{regular singular point} if $(x-x_0)p(x)$ and $(x-x_0)^2 q(x)$ are analytic at $x_0$.
+
+\textbf{Assume:} $y = \sum_{n=0}^{\infty} a_n (x-x_0)^{n+r}$ where $r$ is found from the \textbf{indicial equation}.
+
+$y' = \sum_{n=0}^{\infty} (n+r) a_n (x-x_0)^{n+r-1}$
+
+$y'' = \sum_{n=0}^{\infty} (n+r)(n+r-1) a_n (x-x_0)^{n+r-2}$
+
+Substitute into ODE $\to$ indicial equation for $r$ arises from the lowest power coefficient. The roots $r_1, r_2$ (with $r_1 \geq r_2$) determine the form of solutions.
+
+\vspace{6pt}
+%----------------------------------------------
+\textbf{Cases for Indicial Roots}
+
+\textbf{Case I: Distinct roots, $r_1 - r_2 \notin \mathbb{Z}$}
+
+$y_1 = x^{r_1} \sum a_n x^n$, \quad $y_2 = x^{r_2} \sum b_n x^n$
+
+Both solutions found directly by substitution.
+
+\textbf{Case II: Equal roots, $r_1 = r_2 = r$}
+
+$y_1 = x^{r} \sum a_n x^n$
+
+$y_2 = y_1 \ln x + x^{r} \sum c_n x^n$
+
+\textbf{Abel's Formula:} Given $y_1$, find $y_2$ via reduction of order:
+\[
+y_2 = y_1 \int \frac{e^{-\int P(x)\,dx}}{[y_1]^2} \, dx
+\]
+where $P(x)$ is from the normalized form $y'' + P(x)y' + Q(x)y = 0$.
+
+\textbf{Case III: Roots differ by integer, $r_1 - r_2 = k \in \mathbb{Z}^+$}
+
+$y_1 = x^{r_1} \sum a_n x^n$ (use larger root)
+
+For $y_2$: Try the second root $r_2$ directly as in Case I. This may work and give a valid second solution.
+
+If the recurrence collapses (division by zero), then use:
+\[
+y_2 = C y_1 \ln x + x^{r_2} \sum_{n=0}^{\infty} c_n x^n
+\]
+where $C$ is a constant (possibly zero) determined by substitution.
+
+\vspace{6pt}
+%----------------------------------------------
+\textbf{Constructing the Solution}
+
+After finding the series coefficients, write:
+\[
+y(x) = x^r \left[ a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots \right]
+\]
+Factor out common terms and identify known functions (exponentials, trig functions, Bessel functions, etc.) when possible.
+
+\vspace{6pt}
+%----------------------------------------------
+\textbf{Bessel's Equation}
+
+Form: $x^2 y'' + xy' + (x^2 - \nu^2)y = 0$
+
+Bessel function of the first kind:
+\[
+J_\nu(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n! \, \Gamma(n+\nu+1)} \left(\frac{x}{2}\right)^{2n+\nu}
+\]
+
+Alternate form:
+\[
+J_\nu(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{2^{2n+\nu} \cdot n! \cdot (1+\nu)(2+\nu)\cdots(n+\nu)} x^{2n+\nu}
+\]
