@@ -7,7 +7,18 @@
 %----------------------------------------------
 \textbf{Power Series Method (Ordinary Points)}
 
-Form: $y'' + p(x)y' + q(x)y = r(x)$ about $x_0$ where $p(x), q(x)$ are analytic.
+Recall that a power series is an expansion of the form
+\[
+y(x)=\sum_{n=0}^{\infty} a_n (x-x_0)^n .
+\]
+For a linear differential equation
+\[
+y'' + p(x)y' + q(x)y = r(x),
+\]
+if \(p(x), q(x), r(x)\) are analytic at \(x_0\), then the solution is also analytic at \(x_0\).
+This allows us to represent the solution as a power series and reduce the differential equation to an algebraic recurrence relation for the coefficients \(a_n\). To solve such equations, we need to follow these steps:
+
+
 
 \textbf{1. Assume:} $y = \sum_{n=0}^{\infty} a_n x^n$
 
@@ -33,9 +44,13 @@ Taylor form: $y = \sum \frac{y^{(n)}(0)}{n!} x^n$
 %----------------------------------------------
 \textbf{Frobenius Method (Singular Points)}
 
-Use when $p(x)$ or $q(x)$ have singularities ($\frac{1}{x}$, $\frac{1}{x^2}$, etc.).
+When \(p(x)\) or \(q(x)\) contains singular terms such as \(\tfrac{1}{x}\) or \(\tfrac{1}{x^2}\), the standard power series method generally fails because the solution need not be analytic at the expansion point.
 
-Point $x_0$ is a \textbf{regular singular point} if $(x-x_0)p(x)$ and $(x-x_0)^2 q(x)$ are analytic at $x_0$.
+A point \(x_0\) is called a \textbf{regular singular point} if \((x-x_0)p(x)\) and \((x-x_0)^2 q(x)\) are analytic at \(x_0\). 
+Although the coefficients themselves are singular, the differential equation retains enough structure to admit solutions of a generalized power series form.
+
+In this case, the appropriate technique is the \textbf{Frobenius Method}, which extends the power series approach to handle regular singular points.
+
 
 \textbf{Assume:} $y = \sum_{n=0}^{\infty} a_n (x-x_0)^{n+r}$ where $r$ is found from the \textbf{indicial equation}.
 
