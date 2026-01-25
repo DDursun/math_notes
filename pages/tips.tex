@@ -12,25 +12,60 @@ It is often the case that complex problems are transferred into a different doma
 
 \textbf{Partial Fraction Decomposition}
 
+Being able to x the equation into fractions is a useful tool in many situations. To achieve this, set up the expected form, multiply both sides by the common denominator, then either:
+(1) Substitute convenient values (roots ofthe  denominator) to find the coefficients, or
+(2) Expand and match coefficients of like powers.
+Common patterns:
+
+$\dfrac{1}{(s+a)(s+b)} = \dfrac{A}{s+a} + \dfrac{B}{s+b}$ 
+
+$\dfrac{1}{s(s+a)} = \dfrac{A}{s} + \dfrac{B}{s+a}$
+
+$\dfrac{1}{s^2(s+a)} = \dfrac{A}{s} + \dfrac{B}{s^2} + \dfrac{C}{s+a}$
+
+$\dfrac{1}{(s+a)^n} = \dfrac{A_1}{s+a} + \dfrac{A_2}{(s+a)^2} + \cdots + \dfrac{A_n}{(s+a)^n}$
+
 $\dfrac{1}{(s+a)^n} = \dfrac{A_1}{s+a} + \dfrac{A_2}{(s+a)^2} + \cdots + \dfrac{A_n}{(s+a)^n}$
 
 $\dfrac{1}{(s+a)^2(s+b)} = \dfrac{A}{s+a} + \dfrac{B}{(s+a)^2} + \dfrac{C}{s+b}$
 
 $\dfrac{1}{(s+a)(s^2+b^2)} = \dfrac{A}{s+a} + \dfrac{Bs+C}{s^2+b^2}$
 
-$\dfrac{1}{s^2(s+a)} = \dfrac{A}{s} + \dfrac{B}{s^2} + \dfrac{C}{s+a}$
 
 
 
 \hrulefill
 
-\textbf{6. Chain Rule}
+\textbf{Polynomial Long Division}
 
-$\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}$, \quad $\frac{\partial z}{\partial s} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial s}$
+Once one root of a cubic is found, polynomial division reduces it to a quadratic, whose remaining roots follow easily. 
+If the constant term is not large, try integer roots in $[-2,2]$ first. Then,
 
 
+Divide leading terms $\to$ multiply divisor by result $\to$ subtract $\to$ bring down $\to$ repeat.
 
-\textbf{17. Hyperbolic Functions}
+Ex: $(x^3 - x^2 - x - 2) \div (x - 2)$
+\[
+\arraycolsep=1pt
+\begin{array}{r|l}
+x^2 + x + 1 & \\
+\hline
+x - 2 \;\big) & x^3 - x^2 - x - 2 \\
+& x^3 - 2x^2 \downarrow \\
+\cline{2-2}
+& x^2 - x \\
+& x^2 - 2x \downarrow \\
+\cline{2-2}
+& x - 2 \\
+& x - 2 \\
+\cline{2-2}
+& 0
+\end{array}
+\]
+Result: $x^2 + x + 1$
+
+
+\textbf{17. Useful Trigonometric Equalities}
 
 $\sinh x = \frac{e^x - e^{-x}}{2}$, \quad $\cosh x = \frac{e^x + e^{-x}}{2}$
 
@@ -42,8 +77,33 @@ $\cosh(A \pm B) = \cosh A \cosh B \pm \sinh A \sinh B$
 
 $\frac{d}{dx}\sinh x = \cosh x$, \quad $\frac{d}{dx}\cosh x = \sinh x$
 
-\hrulefill
+
 
 \textbf{18. Reduction Formulas}
 
 $\displaystyle\int \sin^n\theta\,d\theta = -\frac{\sin^{n-1}\theta\cos\theta}{n} + \frac{n-1}{n}\int\sin^{n-2}\theta\,d\theta$
+
+$\displaystyle\int \cos^n\theta\,d\theta = \frac{\cos^{n-1}\theta\sin\theta}{n} + \frac{n-1}{n}\int\cos^{n-2}\theta\,d\theta$
+
+$\displaystyle\int \tan^n\theta\,d\theta = \frac{\tan^{n-1}\theta}{n-1} - \int\tan^{n-2}\theta\,d\theta$
+
+$\displaystyle\int \sec^n\theta\,d\theta = \frac{\sec^{n-2}\theta\tan\theta}{n-1} + \frac{n-2}{n-1}\int\sec^{n-2}\theta\,d\theta$
+
+
+
+
+
+\textbf{Polar Coordinates}
+
+
+\textbf{6. Chain Rule}
+
+$\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}$, \quad $\frac{\partial z}{\partial s} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial s}$
+
+
+\textbf{Euler's Formula \& Identity}
+
+\[
+e^{i\theta} = \cos\theta + i\sin\theta
+\]
+\[e^{i\pi} + 1 = 0\]

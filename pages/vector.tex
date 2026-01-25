@@ -23,7 +23,7 @@ $s = \int_a^b |\mathbf{r}'|\,dt$, \quad $\mathbf{T} = \frac{\mathbf{r}'}{|\mathb
 
 \textbf{3. Curvature $\kappa$}
 
-$\boxed{\kappa = \frac{|\mathbf{r}' \times \mathbf{r}''|}{|\mathbf{r}'|^3}}$ \quad 2D: $\kappa = \frac{|y''|}{(1 + (y')^2)^{3/2}}$
+$\kappa = \frac{|\mathbf{r}' \times \mathbf{r}''|}{|\mathbf{r}'|^3}$ \quad 2D: $\kappa = \frac{|y''|}{(1 + (y')^2)^{3/2}}$
 
 Circle: $\kappa = 1/a$ \quad Helix: $\kappa = \frac{a}{a^2 + c^2}$
 
@@ -59,7 +59,7 @@ For $F(x,y,z) = c$ at point $P_0(x_0, y_0, z_0)$:
 
 \textbf{Step 2:} Evaluate at $P_0$: $\mathbf{n} = \nabla F|_{P_0} = \langle a, b, c \rangle$
 
-\textbf{Step 3:} Tangent: $\boxed{a(x-x_0) + b(y-y_0) + c(z-z_0) = 0}$
+\textbf{Step 3:} Tangent: $a(x-x_0) + b(y-y_0) + c(z-z_0) = 0$
 
 \textbf{Normal line:} $x = x_0 + at$, $y = y_0 + bt$, $z = z_0 + ct$
 
@@ -71,9 +71,9 @@ For $F(x,y,z) = c$ at point $P_0(x_0, y_0, z_0)$:
 
 For $\mathbf{F} = P\mathbf{i} + Q\mathbf{j} + R\mathbf{k}$:
 
-$\boxed{\text{div}\,\mathbf{F} = \nabla \cdot \mathbf{F} = P_x + Q_y + R_z}$
+$\text{div}\,\mathbf{F} = \nabla \cdot \mathbf{F} = P_x + Q_y + R_z$
 
-$\boxed{\text{curl}\,\mathbf{F} = \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \partial_x & \partial_y & \partial_z \\ P & Q & R \end{vmatrix}}$
+$\text{curl}\,\mathbf{F} = \nabla \times \mathbf{F} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \partial_x & \partial_y & \partial_z \\ P & Q & R \end{vmatrix}$
 
 $= (R_y - Q_z)\mathbf{i} - (R_x - P_z)\mathbf{j} + (Q_x - P_y)\mathbf{k}$
 
@@ -97,21 +97,67 @@ $\int_C G\,dx = \int_a^b G\,x'(t)\,dt$, \quad $\int_C G\,dy = \int_a^b G\,y'(t)\
 
 $\int_C G\,ds = \int_a^b G\sqrt{(x')^2+(y')^2+(z')^2}\,dt$
 
-If $y = f(x)$: $\boxed{ds = \sqrt{1 + \left(\frac{dy}{dx}\right)^2}\,dx}$
+If $y = f(x)$: $ds = \sqrt{1 + \left(\frac{dy}{dx}\right)^2}\,dx$
 
 \hrulefill
 
-\textbf{10. Work \& $\int\mathbf{F}\cdot d\mathbf{r}$}
+\textbf{10. Work \& $\int \mathbf{F}\cdot d\mathbf{r}$}
 
-$\boxed{W = \int_C \mathbf{F} \cdot d\mathbf{r} = \int_C P\,dx + Q\,dy + R\,dz}$
+For $\mathbf{F} = P\mathbf{i}+Q\mathbf{j}+R\mathbf{k}$ and curve $C$:
 
-Parametric: $W = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\,dt$
+\[
+W = \int_C \mathbf{F}\cdot d\mathbf{r}
+= \int_C P\,dx + Q\,dy + R\,dz
+\]
+
+Parametric form ($\mathbf r(t)$, $a\le t\le b$):
+\[
+W = \int_a^b \mathbf{F}(\mathbf r(t))\cdot \mathbf r'(t)\,dt
+\]
+
+\textit{Work depends on the path unless $\mathbf F$ is conservative.}
+
+\hrulefill
+
+\textbf{11. Conservative Vector Fields}
+
+$\mathbf F$ is \textbf{conservative} if there exists $f$ such that $\mathbf F=\nabla f$.
+
+
+On a simply connected domain, the following are equivalent:
+\[
+\nabla \times \mathbf F = \mathbf 0
+\quad \Longleftrightarrow \quad
+\oint_C \mathbf F\cdot d\mathbf r = 0
+\quad \Longleftrightarrow \quad
+\text{path independence}
+\]
+
+\textbf{Fundamental Theorem for Line Integrals:}
+\[
+\int_C \mathbf F\cdot d\mathbf r = f(B)-f(A)
+\]
+
+\textit{Shortcut: find $f$ instead of integrating.}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \hrulefill
 
 \textbf{11. Green's Theorem}
 
-$\boxed{\oint_C P\,dx + Q\,dy = \iint_D (Q_x - P_y)\,dA}$
+$\oint_C P\,dx + Q\,dy = \iint_D (Q_x - P_y)\,dA$
 
 \textit{Transfers between line integrals and double integrals.}
 
@@ -120,7 +166,7 @@ $\boxed{\oint_C P\,dx + Q\,dy = \iint_D (Q_x - P_y)\,dA}$
 \textbf{12. Surface Area}
 
 For surface $z = f(x,y)$ over region $R$:
-$\boxed{A(S) = \iint_R \sqrt{1 + (f_x)^2 + (f_y)^2}\,dA}$
+$A(S) = \iint_R \sqrt{1 + (f_x)^2 + (f_y)^2}\,dA$
 
 \hrulefill
 
@@ -128,7 +174,7 @@ $\boxed{A(S) = \iint_R \sqrt{1 + (f_x)^2 + (f_y)^2}\,dA}$
 
 $x = r\cos\theta$, $y = r\sin\theta$, $dA = r\,dr\,d\theta$
 
-$\boxed{\iint_R f(x,y)\,dA = \int_\alpha^\beta \int_{g_1(\theta)}^{g_2(\theta)} f(r\cos\theta, r\sin\theta)\,r\,dr\,d\theta}$
+$\iint_R f(x,y)\,dA = \int_\alpha^\beta \int_{g_1(\theta)}^{g_2(\theta)} f(r\cos\theta, r\sin\theta)\,r\,dr\,d\theta$
 
 \textit{Tip:} $\int_{0}^{\pi} |\cos\theta|\,d\theta = 2\int_{0}^{\pi/2} \cos\theta\,d\theta$ (use symmetry for $|\cdot|$)
 
@@ -136,7 +182,7 @@ $\boxed{\iint_R f(x,y)\,dA = \int_\alpha^\beta \int_{g_1(\theta)}^{g_2(\theta)} 
 
 \textbf{14. Stokes' Theorem}
 
-$\boxed{\oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot \mathbf{n}\,dA}$
+$\oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}) \cdot \mathbf{n}\,dA$
 
 \textit{Transfers between line integrals and surface integrals.}
 
@@ -144,16 +190,7 @@ $\boxed{\oint_C \mathbf{F} \cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F}
 
 \textbf{15. Divergence Theorem}
 
-$\boxed{\iint_S \mathbf{F} \cdot \mathbf{n}\,dS = \iiint_D \nabla \cdot \mathbf{F}\,dV}$
+$\iint_S \mathbf{F} \cdot \mathbf{n}\,dS = \iiint_D \nabla \cdot \mathbf{F}\,dV$
 
 \textit{Transfers between surface integrals and volume integrals.}
 
-\hrulefill
-
-\textbf{16. Laplacian in Polar}
-
-$\boxed{\nabla^2 u = u_{rr} + \frac{1}{r}u_r + \frac{1}{r^2}u_{\theta\theta}}$
-
-$r_x = \cos\theta$, $r_y = \sin\theta$, $\theta_x = -\frac{\sin\theta}{r}$, $\theta_y = \frac{\cos\theta}{r}$
-
-\hrulefill

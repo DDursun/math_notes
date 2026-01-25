@@ -4,6 +4,36 @@
 \end{center}
 \vspace{4pt}]
 %----------------------------------------------
+\textbf{Definition of a Laplace Transform}
+
+The \textbf{Laplace transform} of a function $f(t)$ is defined as
+\[
+\mathcal{L}\{f(t)\} = F(s) = \int_{0}^{\infty} e^{-st} f(t)\,dt.
+\]
+
+In simple terms, the Laplace transform maps a function from the time domain $t$ to the complex frequency domain $s$. 
+Due to its linearity and its ability to convert derivatives into algebraic expressions in $s$, the resulting equation involves only algebraic terms, which are easier to manipulate. 
+After simplification in the $s$-domain (see general shortcuts), the inverse Laplace transform is applied to obtain the solution in the time domain.
+
+\begin{center}
+\begin{tikzpicture}[
+  box/.style={draw, rectangle, minimum width=3.6cm, minimum height=1cm, align=center},
+  arrow/.style={->, thick}
+]
+
+\node[box] (de) {Differential\\Equation};
+\node[box, below=of de] (alg) {Algebraic Equation\\in $s$};
+\node[box, right=of alg] (sol) {Solution\\$f(t)$};
+
+\draw[arrow] (de) -- node[right] {$\mathcal{L}$} (alg);
+\draw[arrow] (alg) -- node[above] {$\mathcal{L}^{-1}$} (sol);
+
+\end{tikzpicture}
+\end{center}
+
+
+
+
 \textbf{Derivatives in $s$-Domain}
 
 Transform: $y(t) \to Y(s)$
@@ -19,27 +49,12 @@ $\mathcal{L}\{t^n g(t)\} = (-1)^n \frac{d^n}{ds^n}F(s)$
 
 \hrulefill
 
-\textbf{Convolution}
 
-Definition: $(f*g)(t) = \displaystyle\int_0^t f(\tau)\,g(t-\tau)\,d\tau$
+\textbf{Heaviside and Step Functions}
 
-Laplace of convolution: $\mathcal{L}\{f*g\} = F(s) \cdot G(s)$
-
-Integration property: $\mathcal{L}\left\{\displaystyle\int_0^t g(\tau)\,d\tau\right\} = \dfrac{1}{s}F(s)$
-
-\hrulefill
-
-\textbf{Periodic (Repeating) Functions}
-
-For $g(t)$ with period $T$:
-$\mathcal{L}\{g(t)\} = \frac{1}{1-e^{-sT}} \cdot \int_0^T e^{-st}g(t)\,dt$
-
-If function changes form, split the integral (multiplier stays):
-$\mathcal{L}\{g(t)\} = \frac{1}{1-e^{-sT}} \cdot \left[\int_0^a e^{-st}g_1(t)\,dt + \int_a^{T} e^{-st}g_2(t)\,dt\right]$
-
-\hrulefill
-
-\textbf{Piecewise $\to$ Heaviside}
+Not all functions encountered in engineering are continuous. 
+Step functions are piecewise-defined functions that change their value or functional form at specified points along the $x$-axis. 
+They are commonly used to model systems with sudden inputs or switching behaviors.
 
 Turn off at $a$: $\begin{cases} g(t), & t<a \\ 0, & t\geq a \end{cases} = g(t) - g(t)\,u(t-a)$
 
@@ -49,20 +64,13 @@ Switch at $a$: $\begin{cases} g(t), & t<a \\ h(t), & t\geq a \end{cases} = g(t) 
 
 \hrulefill
 
-\textbf{Time Shift (Second Shifting Theorem)}
+\textbf{Properties of Laplace functions}
 
-Forward: $\mathcal{L}\{u(t-a)\,g(t-a)\} = e^{-as}F(s)$
+Convolution: $(f*g)(t) = \displaystyle\int_0^t f(\tau)\,g(t-\tau)\,d\tau$
 
-Inverse: $\mathcal{L}^{-1}\{e^{-as}F(s)\} = u(t-a)\,g(t-a)$
+Laplace of convolution: $\mathcal{L}\{f*g\} = F(s) \cdot G(s)$
 
-\textbf{Rewriting $g(t)\,u(t-a)$:} Can't apply shift theorem directly! Rewrite $g(t)$ in terms of $(t-a)$:
-\begin{align*}
-t\,u(t-1) &= [(t-1)+1]\,u(t-1) = (t-1)u(t-1) + u(t-1)
-\end{align*}
-Now each term fits shift theorem:
-$\mathcal{L}\{(t-1)u(t-1)\} = e^{-s}/s^2$, \quad $\mathcal{L}\{u(t-1)\} = e^{-s}/s$
-
-\hrulefill
+Integration property: $\mathcal{L}\left\{\displaystyle\int_0^t g(\tau)\,d\tau\right\} = \dfrac{1}{s}F(s)$
 
 \textbf{First Shifting Theorem ($s$-shifting)}
 
@@ -75,20 +83,61 @@ $\mathcal{L}\{e^{at}t^n\} = \frac{n!}{(s-a)^{n+1}}$, \quad
 $\mathcal{L}\{e^{at}\sin kt\} = \frac{k}{(s-a)^2+k^2}$, \quad
 $\mathcal{L}\{e^{at}\cos kt\} = \frac{s-a}{(s-a)^2+k^2}$
 
+
+\textbf{Second Shifting Theorem}
+
+Forward: $\mathcal{L}\{u(t-a)\,g(t-a)\} = e^{-as}F(s)$
+
+Inverse: $\mathcal{L}^{-1}\{e^{-as}F(s)\} = u(t-a)\,g(t-a)$
+
+\textbf{Rewriting $g(t)\,u(t-a)$:} Can't apply shift theorem directly! Rewrite $g(t)$ in terms of $(t-a)$:
+\begin{align*}
+t\,u(t-1) &= [(t-1)+1]\,u(t-1) = (t-1)u(t-1) + u(t-1)
+\end{align*}
+Now each term fits the shift theorem:
+$\mathcal{L}\{(t-1)u(t-1)\} = e^{-s}/s^2$, \quad $\mathcal{L}\{u(t-1)\} = e^{-s}/s$
+
 \hrulefill
 
-\textbf{Unit Step Function}
+\textbf{Periodic (Repeating) Functions}
 
-Definition: $u(t-a) = \begin{cases} 0, & t < a \\ 1, & t \geq a \end{cases}$
-\quad Transform: $\mathcal{L}\{u(t-a)\} = \dfrac{e^{-as}}{s}$
+For $g(t)$ with period $T$:
+$\mathcal{L}\{g(t)\} = \frac{1}{1-e^{-sT}} \cdot \int_0^T e^{-st}g(t)\,dt$
+
+If the function changes form, split the integral (multiplier stays):
+$\mathcal{L}\{g(t)\} = \frac{1}{1-e^{-sT}} \cdot \left[\int_0^a e^{-st}g_1(t)\,dt + \int_a^{T} e^{-st}g_2(t)\,dt\right]$
+
 
 \hrulefill
 
-\textbf{Completing the Square}
 
-For $s^2 + bs + c$: rewrite as $(s + b/2)^2 + (c - b^2/4)$
+\textbf{Tips for Inversion}
 
-Example: $s^2 + 6s + 34 = (s+3)^2 + 25$ \quad Then use $s$-shifting with $a = -3$, $k = 5$
+\begin{enumerate}
+\item \textbf{Completing the Square}
+
+For $s^2 + bs + c$, rewrite as
+\[
+\left(s+\tfrac{b}{2}\right)^2 + \left(c-\tfrac{b^2}{4}\right).
+\]
+Example:
+$s^2 + 6s + 34 = (s+3)^2 + 25$
+
+then apply the $s$-shifting theorem with $a=-3$ and $k=5$.
+
+\item \textbf{Partial Fraction Decomposition}
+
+Decompose rational functions into simpler terms:
+\[
+\frac{1}{(s+a)^n}
+= \frac{A_1}{s+a} + \frac{A_2}{(s+a)^2} + \cdots + \frac{A_n}{(s+a)^n}.
+\]
+
+\item \textbf{Standard Transform Matching}
+
+Before decomposing, check whether the expression matches a known Laplace pair (exponentials, sines, cosines, polynomials). This often avoids unnecessary algebra.
+\end{enumerate}
+
 
 \hrulefill
 
