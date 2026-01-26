@@ -47,7 +47,7 @@ Taylor form: $y = \sum \frac{y^{(n)}(0)}{n!} x^n$
 When \(p(x)\) or \(q(x)\) contains singular terms such as \(\tfrac{1}{x}\) or \(\tfrac{1}{x^2}\), the standard power series method generally fails because the solution need not be analytic at the expansion point.
 
 A point \(x_0\) is called a \textbf{regular singular point} if \((x-x_0)p(x)\) and \((x-x_0)^2 q(x)\) are analytic at \(x_0\). 
-Although the coefficients themselves are singular, the differential equation retains enough structure to admit solutions of a generalized power series form.
+Although the coefficients are singular, the differential equation retains enough structure to admit solutions of a generalized power series form.
 
 In this case, the appropriate technique is the \textbf{Frobenius Method}, which extends the power series approach to handle regular singular points.
 
@@ -106,16 +106,37 @@ Factor out common terms and identify known functions (exponentials, trig functio
 
 \vspace{6pt}
 %----------------------------------------------
-\textbf{Bessel's Equation}
+\textbf{Bessel's Functions}
+Bessel Functions are solutions to Bessel equations with the form:
 
-Form: $x^2 y'' + xy' + (x^2 - \nu^2)y = 0$
+$x^2 y'' + xy' + (x^2 - \nu^2)y = 0$
+
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \vspace{-10pt}
+    \includegraphics[width=0.24\textwidth]{figures/output.png}
+    \caption*{\scriptsize $J_0(u_{04}r)$ on unit disk}
+    \vspace{-5pt}
+\end{wrapfigure}
+
+They can be considered as a special case of the Frobenius solution when $r=n$ and they arise naturally when solving PDEs (heat, wave, Laplace) in cylindrical or spherical coordinates.
+
 
 Bessel function of the first kind:
 \[
 J_\nu(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n! \, \Gamma(n+\nu+1)} \left(\frac{x}{2}\right)^{2n+\nu}
 \]
 
-Alternate form:
+\textbf{Case 1:} $\nu \neq$ integer — $J_\nu$ and $J_{-\nu}$ are linearly independent:
 \[
-J_\nu(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{2^{2n+\nu} \cdot n! \cdot (1+\nu)(2+\nu)\cdots(n+\nu)} x^{2n+\nu}
+y = c_1 J_\nu(x) + c_2 J_{-\nu}(x)
 \]
+
+\textbf{Case 2:} $\nu = n$ (integer) — $J_{-n} = (-1)^n J_n$, need Bessel function of the second kind:
+\[
+y = c_1 J_n(x) + c_2 Y_n(x)
+\]
+where $Y_n(x) = \displaystyle\lim_{\nu \to n} \frac{J_\nu(x)\cos(\nu\pi) - J_{-\nu}(x)}{\sin(\nu\pi)}$
+
+\textbf{Note:} $J_n(0)$ is bounded; $Y_n(0) \to -\infty$. For domains including origin, set $c_2 = 0$.

@@ -5,7 +5,7 @@
 \vspace{4pt}
 ]
 %----------------------------------------------
-Many physics and engineering problems include coupled differential equations. For example, n coupled springs will result in n coupled differential equations arising from the equalization of Newtonian and Hooke's Forces. First-order ODE systems can also be used as reduction of order method with the introduction of new variables for successive derivatives:
+Many physics and engineering problems include coupled differential equations. For example, n coupled springs will result in n coupled differential equations arising from the equalization of Newtonian and Hooke's Forces. First-order ODE systems can also be used as a reduction of order method with the introduction of new variables for successive derivatives:
 
 \[
 y'' + 3y' + 2y = 0.
@@ -17,6 +17,36 @@ x_1 = y, \qquad x_2 = y'.
 \]
 
 Then the system can be written as the following first-order system:
+\[
+\begin{bmatrix} x_1' \\ x_2' \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -2 & -3 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+\]
+In general, $\mathbf{x}' = A\mathbf{x}$ where $A$ encodes the system coefficients.
+
+%----------------------------------------------
+\hrulefill
+
+\textbf{Stability Classification (2D Systems)}
+
+Based on eigenvalues $\lambda_1, \lambda_2$ of matrix $A$:
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Stable node:} & both real, $\lambda_1, \lambda_2 < 0$ \\
+\textbf{Unstable node:} & both real, $\lambda_1, \lambda_2 > 0$ \\
+\textbf{Saddle:} & real, opposite signs \\
+\textbf{Stable spiral:} & complex, $\text{Re}(\lambda) < 0$ \\
+\textbf{Unstable spiral:} & complex, $\text{Re}(\lambda) > 0$ \\
+\textbf{Center:} & purely imaginary $\lambda = \pm i\beta$ \\
+\end{tabular}
+
+\textbf{Quick check:} $\tau = a+d$ (trace), $\Delta = ad-bc$ (det)
+\begin{itemize}\itemsep0pt
+\item $\Delta < 0$: saddle (unstable)
+\item $\Delta > 0$, $\tau < 0$: stable (node or spiral)
+\item $\Delta > 0$, $\tau > 0$: unstable (node or spiral)
+\item $\Delta > 0$, $\tau = 0$: center
+\end{itemize}
+
+\textbf{Solution to homogenous system}
 
 \begin{enumerate}\itemsep0pt
 \item \textbf{Real, distinct eigenvalues:}
@@ -77,7 +107,9 @@ u_1'' = \lambda_1 u_1 + (P^{-1}\mathbf{f})_1, \qquad u_2'' = \lambda_2 u_2 + (P^
 Solve each ODE by undetermined coefficients, then back-substitute $\mathbf{x} = P\mathbf{u}$.
 
 %----------------------------------------------
-\textbf{Putzer's Method (2$\times$2)} for $e^{At}$
+\textbf{Matrix Exponentials $e^{At}$}
+
+\textbf{Putzer's Method for (2$\times$2)}
 
 $e^{At} = u_0 I + u_1 A$ for $2\times 2$ matrices
 
