@@ -1,0 +1,15 @@
+I need you to convert my handwritten notes into a LaTeX PDF formula sheet. Follow these specifications:
+
+* Format: LaTeX compiled to PDF, US Letter size, two-column layout
+* Margins: 0.5 inch
+* Font: 10pt
+* Style:
+   * Properly formatted LaTeX equations (fractions, integrals, matrices, etc.)
+   * Inline equations after text when possible to save space (e.g., "Form: dydx+P(x)y=Q(x)\frac{dy}{dx} + P(x)y = Q(x) dxdy+P(x)y=Q(x)")
+   * Use display equations only when necessary for clarity
+   * Use horizontal rules (`\hrulefill`) to separate major sections
+   * Keep explanations concise but readable - not overly compressed
+   * Bold section headers
+   * Include tables where appropriate for quick reference
+
+* Goal: Exam preparation sheet - compact but legible, maximize information density without sacrificing readability I'll upload photos of my handwritten notes. Please transcribe all formulas and methods accurately, organizing them logically.
