@@ -90,21 +90,25 @@ $\frac{d}{dt}(y_3 e^{-2t}) = 7$ $\Rightarrow$ $y_3 = (7t + C_3)e^{2t}$
 \textbf{General formula:} $\mathbf{x}(t) = e^{At}C + e^{At}\displaystyle\int e^{-As}\mathbf{F}(s)\,ds$
 
 %----------------------------------------------
-\textbf{2nd Order Systems (Decoupling)}
+\textbf{2nd Order Systems (Decoupling)}\\
+For coupled second-order systems $\mathbf{x}'' = A\mathbf{x} + \mathbf{f}(t)$, we use eigenvalue decomposition to decouple into independent ODEs.
 
-For $\mathbf{x}'' = A\mathbf{x} + \mathbf{f}(t)$: Let $\mathbf{x} = P\mathbf{u}$ where $P$ = eigenvector matrix of $A$.
+\textbf{Method:} Let $\mathbf{x} = P\mathbf{u}$ where $P$ is the matrix of eigenvectors of $A$.
 
-\textbf{Ex:} $\begin{bmatrix} x_1'' \\ x_2'' \end{bmatrix} = \begin{bmatrix} 3 & -2 \\ -2 & 3 \end{bmatrix}\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} + \begin{bmatrix} f_1 \\ f_2 \end{bmatrix}$
+\textbf{Example:} $\begin{bmatrix} x_1'' \\ x_2'' \end{bmatrix} = \begin{bmatrix} 3 & -2 \\ -2 & 3 \end{bmatrix}\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} + \begin{bmatrix} f_1 \\ f_2 \end{bmatrix}$
 
-Find eigenvalues $\lambda_1, \lambda_2$ and eigenvector matrix $P$. Substitute $\mathbf{x} = P\mathbf{u}$:
-
-$P\mathbf{u}'' = AP\mathbf{u} + \mathbf{f}$ $\xrightarrow{\times P^{-1}}$ $\mathbf{u}'' = \underbrace{P^{-1}AP}_{D}\mathbf{u} + P^{-1}\mathbf{f}$
-
-Since $D = \text{diag}(\lambda_1, \lambda_2)$, system decouples:
-\[
-u_1'' = \lambda_1 u_1 + (P^{-1}\mathbf{f})_1, \qquad u_2'' = \lambda_2 u_2 + (P^{-1}\mathbf{f})_2
-\]
-Solve each ODE by undetermined coefficients, then back-substitute $\mathbf{x} = P\mathbf{u}$.
+\textbf{Steps:}
+\begin{enumerate}
+    \item Find eigenvalues $\lambda_1, \lambda_2$ of $A$ and construct eigenvector matrix $P$.
+    \item Substitute $\mathbf{x} = P\mathbf{u}$ into the system: $P\mathbf{u}'' = AP\mathbf{u} + \mathbf{f}$
+    \item Multiply both sides by $P^{-1}$: $\mathbf{u}'' = P^{-1}AP\mathbf{u} + P^{-1}\mathbf{f}$
+    \item Since $P^{-1}AP = D = \text{diag}(\lambda_1, \lambda_2)$, the system decouples:
+    \[
+    u_1'' = \lambda_1 u_1 + (P^{-1}\mathbf{f})_1, \qquad u_2'' = \lambda_2 u_2 + (P^{-1}\mathbf{f})_2
+    \]
+    \item Solve each independent ODE using standard methods (undetermined coefficients, variation of parameters).
+    \item Back-substitute to get original variables: $\mathbf{x} = P\mathbf{u}$
+\end{enumerate}
 
 %----------------------------------------------
 \textbf{Matrix Exponentials $e^{At}$}

@@ -1,6 +1,6 @@
 \twocolumn[
 \begin{center}
-\textbf{\Large Useful Equalities}
+\textbf{\Large Useful Identities \& Tricks}
 \end{center}
 \vspace{4pt}]
 
@@ -12,20 +12,17 @@ It is often the case that complex problems are transferred into a different doma
 
 \textbf{1. Partial Fraction Decomposition}
 
-Being able to x the equation into fractions is a useful tool in many situations. To achieve this, set up the expected form, multiply both sides by the common denominator, then either:
-(1) Substitute convenient values (roots ofthe  denominator) to find the coefficients, or
+Being able to split the equation into fractions is a useful tool. To achieve this, set up the expected form, multiply both sides by the common denominator, then either:
+(1) Substitute convenient values (roots of the  denominator) to find the coefficients, or
 (2) Expand and match coefficients of like powers.
 Common patterns:
 
 $\dfrac{1}{(s+a)(s+b)} = \dfrac{A}{s+a} + \dfrac{B}{s+b}$ 
 
-$\dfrac{1}{s(s+a)} = \dfrac{A}{s} + \dfrac{B}{s+a}$
-
 $\dfrac{1}{s^2(s+a)} = \dfrac{A}{s} + \dfrac{B}{s^2} + \dfrac{C}{s+a}$
 
 $\dfrac{1}{(s+a)^n} = \dfrac{A_1}{s+a} + \dfrac{A_2}{(s+a)^2} + \cdots + \dfrac{A_n}{(s+a)^n}$
 
-$\dfrac{1}{(s+a)^n} = \dfrac{A_1}{s+a} + \dfrac{A_2}{(s+a)^2} + \cdots + \dfrac{A_n}{(s+a)^n}$
 
 $\dfrac{1}{(s+a)^2(s+b)} = \dfrac{A}{s+a} + \dfrac{B}{(s+a)^2} + \dfrac{C}{s+b}$
 
@@ -60,12 +57,25 @@ x - 2 \;\big) & x^3 - x^2 - x - 2 \\
 & x - 2 \\
 \cline{2-2}
 & 0
-\end{array}
-\]
+\end{array}\]
 Result: $x^2 + x + 1$
 
+\textbf{3. Equalizing indices in sum operators}
 
-\textbf{3. Useful Trigonometric Equalities}
+Equalizing indices (or ``shifting indices'') in sum operators ($\sum$) involves adjusting the lower/upper bounds and the general term formula simultaneously to make summation limits match, often for combining terms.
+
+
+ \textbf{Shifting the Index:} To shift the starting index from $m$ to $m+r$, replace $n$ with $n+r$ in the expression and subtract $r$ from the upper bound to keep the number of terms consistent:
+    \[
+    \sum_{n=m}^{p} a_n = \sum_{n=m+r}^{p+r} a_{n-r}
+    \]
+
+The idea is simple: if a backward shift is needed (starting the sum from $n-1$ instead of $n$), replace the lower limit $n \to n-1$, substitute $n \to n+1$ in the internal expression to compensate.
+
+\textbf{Example:} To shift $\sum_{n=1}^{4} n^2$ to start at $n=0$, it becomes $\sum_{n=0}^{3} (n+1)^2$.
+
+
+\textbf{4. Useful Trigonometric Equalities}
 
 $\sinh x = \frac{e^x - e^{-x}}{2}$, \quad $\cosh x = \frac{e^x + e^{-x}}{2}$
 
@@ -79,8 +89,7 @@ $\frac{d}{dx}\sinh x = \cosh x$, \quad $\frac{d}{dx}\cosh x = \sinh x$
 
 
 
-
-\textbf{4. Reduction Formulas}
+\textbf{5. Reduction Formulas}
 
 $\displaystyle\int \sin^n\theta\,d\theta = -\frac{\sin^{n-1}\theta\cos\theta}{n} + \frac{n-1}{n}\int\sin^{n-2}\theta\,d\theta$
 
@@ -90,21 +99,45 @@ $\displaystyle\int \tan^n\theta\,d\theta = \frac{\tan^{n-1}\theta}{n-1} - \int\t
 
 $\displaystyle\int \sec^n\theta\,d\theta = \frac{\sec^{n-2}\theta\tan\theta}{n-1} + \frac{n-2}{n-1}\int\sec^{n-2}\theta\,d\theta$
 
-\textbf{5. Euler's Formula \& Identity}
-
+\textbf{6. Euler's Formula \& Identity}
 \[
-e^{i\theta} = \cos\theta + i\sin\theta
+e^{i\theta} = \cos\theta + i\sin\theta, \quad e^{i\pi} + 1 = 0
 \]
-\[e^{i\pi} + 1 = 0\]
 
 
 
-\textbf{6. Chain Rule}
+\textbf{7. Chain Rule}
+This rule applies to composite functions, where one function is nested inside another. The idea is similar to connected gears: to find the total rate of change, you multiply the rate of change of the outer function by the rate of change of the inner function.
 
-$\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}$, \quad $\frac{\partial z}{\partial s} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial s}$
+To differentiate $y = f(g(x))$, let $u = g(x)$. Then $y = f(u)$ and:
+\[
+\frac{dy}{dx} = \frac{dy}{du} \times \frac{du}{dx}
+\]
 
+For multivariable functions, the chain rule involves summing contributions from each intermediate variable:
+\[
+\frac{dz}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}, \quad \frac{\partial z}{\partial s} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial s} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial s}
+\]
 
-\textbf{7. Polar Coordinates}
+\textbf{8. Polar Coordinates}
+ A point is defined by distance $r$ from the origin and angle $\theta$ from the positive $x$-axis. Useful for circular/rotational problems and simplifies integrals with radial symmetry.
 
+ \begin{wrapfigure}{r}{0.23\textwidth}
+    \centering
+    \vspace{-15pt}
+    \includegraphics[width=0.24\textwidth]{figures/polar.png}
+    \caption{\scriptsize Polar  coordinate system}
+    \vspace{-5pt}
+\end{wrapfigure}
 
+\textbf{Conversions:}
+\begin{align*}
+x &= r\cos\theta, \quad y = r\sin\theta \\
+r &= \sqrt{x^2 + y^2}, \quad \theta = \arctan\frac{y}{x}
+\end{align*}
 
+\textbf{Line and Area elements:} 
+
+$ds = \sqrt{dr^2 + r^2 d\theta^2}$
+
+$dA = r \, dr \, d\theta$

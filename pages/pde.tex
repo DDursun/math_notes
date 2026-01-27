@@ -5,9 +5,28 @@
 \vspace{4pt}
 ]
 %----------------------------------------------
-\textbf{General 2nd-Order Linear PDE:} $Au_{xx} + Bu_{xy} + Cu_{yy} + Du_x + Eu_y + Fu = G$
+\textbf{Partial Differential Equations (PDEs)} arise in connection with various physical and geometrical problems when the functions involved depend on two or more independent variables. The order of the highest derivative is called the order of the equation. In general, the solution space to any given PDE is very large, requiring us to define boundary conditions (e.g., $f(0,t)$) and initial conditions (e.g., $f(x,0)$) to achieve a useful solution.
 
-\textbf{Classification} (based on discriminant $B^2 - 4AC$):
+{\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+Method & When Useful \\
+\midrule
+Separation of Variables & Simple geometries, homogenous BCs \\
+Fourier Series/Transform & Periodic/infinite domains \\
+Laplace Transform & Time-dependent, IVPs \\
+Green's Functions & Inhomogeneous PDEs \\
+Method of Characteristics & 1st-order \& hyperbolic \\
+Finite Difference & Complex geom., any PDE \\
+Finite Element & Irregular domains \\
+\bottomrule
+\end{tabular}
+}
+
+
+\textbf{Classification of 2nd-Order Linear PDE:} 
+
+$Au_{xx} + Bu_{xy} + Cu_{yy} + Du_x + Eu_y + Fu = G$
 
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -19,7 +38,6 @@ Elliptic & $B^2 - 4AC < 0$ & Laplace eq. \\
 \bottomrule
 \end{tabular}
 
-\hrulefill
 
 \textbf{Separation of Variables}\\
 \textbf{Steps:}
@@ -51,7 +69,7 @@ $u(0,t)=u_x(L,t)=0$ & $\sin\frac{(2n-1)\pi x}{2L}$, $\lambda_n = \frac{(2n-1)^2\
 \textbf{2D Problems} (e.g., $u_t = K(u_{xx}+u_{yy})$ on $[0,b]\times[0,c]$):
 
 Assume $u = X(x)Y(y)T(t)$, separate $\Rightarrow$ eigenvalues in both $x$ and $y$.
-
+\vspace{-0.5em}
 \begin{multline}
 u(x,y,t) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty} A_{nm}\sin\frac{n\pi x}{b}\sin\frac{m\pi y}{c} \\
 \times e^{-K[(n\pi/b)^2+(m\pi/c)^2]t}
@@ -107,32 +125,16 @@ Rearrange: $U_{xx} - \frac{s}{k}U = -\frac{f(x)}{k}$ (ODE in $x$)
 
 Solve ODE, apply BCs, then invert.
 
-\textbf{Example: Wave Equation via Laplace Transform}
-
-PDE: $u_{tt} = c^2 u_{xx}$, $u(x,0) = f(x)$, $u_t(x,0) = g(x)$
-
-Apply $\mathcal{L}$: $s^2U - sf(x) - g(x) = c^2 U_{xx}$
-
-$U_{xx} - \frac{s^2}{c^2}U = -\frac{sf(x) + g(x)}{c^2}$
-
 \hrulefill
 
-\textbf{Duhamel's Principle}\\
-For nonhomogeneous PDE with zero ICs: $u_t = ku_{xx} + F(x,t)$ or $u_{tt} = c^2u_{xx} + F(x,t)$
+\textbf{Duhamel's Principle}
+For nonhomogeneous PDE with zero ICs: $u_t = ku_{xx} + F(x,t)$ or $u_{tt} = c^2u_{xx} + F(x,t)$.
+The idea is to treat the source term $F(x,\tau)$ as an initial condition at time $\tau$ and superpose solutions over all past times.
 
 \textbf{Steps:}
 1. Solve the corresponding homogeneous problem with IC $= F(x,\tau)$ at $t = \tau$.
 2. Call this solution $v(x,t;\tau)$ (parameterized by $\tau$).
 3. Final solution: $u(x,t) = \int_0^t v(x,t;\tau)\,d\tau$
-
-\hrulefill
-
-\textbf{Useful Identities}\\
-Orthogonality: $\int_0^L \sin\frac{n\pi x}{L}\sin\frac{m\pi x}{L}\,dx = \frac{L}{2}\delta_{nm}$
-
-$\int_0^L \cos\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\,dx = \begin{cases} L & n=m=0 \\ L/2 & n=m\neq 0 \\ 0 & n\neq m\end{cases}$
-
-$\int_0^L \sin\frac{n\pi x}{L}\cos\frac{m\pi x}{L}\,dx = 0$ (all $n,m$)
 
 \hrulefill
 
