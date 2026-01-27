@@ -1,6 +1,7 @@
 # Advanced Engineering Mathematics
 
 ## Introduction
+![Example figure](figures/output.png)
 
 While preparing for qualifying exams, I've produced a pile of notes sourced from the Advanced Engineering Mathematics book by E. Kreyszig.
 For reusability, I tried to compactly summarize key topics on a single page, including Linear Algebra, ODEs, PDEs, Laplace Transforms, and Vector Analysis.
