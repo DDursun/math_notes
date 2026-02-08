@@ -14,6 +14,10 @@ If you want to contribute, feel free to update the tex files and open a pull req
 
 ---
 
+## Worfklow
+To reproduce similar results, use prompt.txt and feed files to the Claude models one by one. You can either directly request PDF or separate TeX files (see pages/ folder) and edit the files yourself. [Overleaf](https://www.overleaf.com/) is a recommended platform for editing, with seamless GitHub integration.
+
+
 ## Files
 
 - **main.tex**  
